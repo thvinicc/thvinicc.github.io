@@ -1,0 +1,207 @@
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/exupero/saveSvgAsPng@gh-pages/src/saveSvgAsPng.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.22/vue.min.js"></script>
+  <script  src="https://cdpn.io/cpe/boomboom/pen.js?key=pen.js-b99654af-0ca5-8bfe-e265-d1b37b2a2dcd" crossorigin></script>
+
+<script>
+const vueData = {
+    inputText: "Seu Nome completo",
+    inputFont: "Profiles",
+    inputFontWeight: "400",
+    inputColorText: "#161616",
+    inputColorBackground: "rgb(0,0,0,0)",
+    inputRadiusX: 0,
+    inputRadiusY: 0,
+    inputSizeWidth: 500,
+    inputSizeHeight: 200,
+    inputTextRatio: 0.7,
+    fontSize: 24,
+    outputFilename: "seu-nome",
+    
+    presetFontWeight: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+    presetFont: ["Raleway", "Roboto", "Otella", "Profiles", "Consuela Script", "Smoothest Personal Use", "Raja Jambe", "No Mystery", "Ronalltie", "Gathering Day", "Snarled", "Lavigne", "Charmograph", "Spring Woman", "Arial", "Amster Style", "Graphik Trial", "ActerumSignaturePersonalUse", ]
+};
+
+function floorClamp(value: number, min: number, max: number): number {
+    return Math.min(Math.max(Math.floor(value), min), max);
+}
+
+new Vue({
+    el: "#root",
+    data: vueData,
+    methods: {
+        recomputeFontSize(this: vueData): void {
+            if (this.inputText === "")
+                return;
+            setTimeout(() => {
+                const el = document.getElementById("mainText");
+                this.fontSize = floorClamp(
+                    el.getAttribute("font-size") * this.inputSizeWidth * this.inputTextRatio / el.getComputedTextLength()
+                , 1, this.inputSizeHeight * this.inputTextRatio);
+            }, 0);
+        },
+        saveSvg(this: vueData): void {
+            saveSvg(document.getElementById("mainSvg"), `${this.outputFilename}.svg`);
+        },
+        savePng(this: vueData): void {
+            saveSvgAsPng(document.getElementById("mainSvg"), `${this.outputFilename}.png`);
+        }
+    },
+    computed: {
+        isImage(this: vueData): boolean {
+            return this.inputColorBackground.startsWith("url(");
+        },
+        inputBackgroundImageUrl(this: vueData): string {
+            return this.inputColorBackground.replace(/^url\(|\)$/g, "");
+        }
+    },
+    watch: {
+        inputText(): void { this.recomputeFontSize(); },
+        inputFont(): void { this.recomputeFontSize(); },
+        inputFontWeight(): void { this.recomputeFontSize(); },
+        inputSizeWidth(): void { this.recomputeFontSize(); },
+        inputSizeHeight(): void { this.recomputeFontSize(); },
+        inputTextRatio(): void { this.recomputeFontSize(); }
+    },
+    created(): void { this.recomputeFontSize(); }
+});
+</script>
+
+
+<link href="https://fonts.cdnfonts.com/css/otella" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/profiles" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/consuela-script" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/smoothest-personal-use" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/raja-jambe" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/no-mystery" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/ronalltie" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/gathering-day" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/snarled" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/lavigne" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/charmograph" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/spring-woman" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/arial" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/amster-style" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/graphik-trial" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/acterumsignaturepersonaluse" rel="stylesheet">
+
+
+
+<main class="mx-auto my-4 container card" id="root">
+    <div class="row card-body">
+        <div class="container">
+            <div class="row">
+                <div class="col form-group">
+                    <label for="inputText">Escreva seu nome completo para gerar sua assinatura</label>
+                    <input type="text" class="form-control" id="inputText" v-model="inputText" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col form-group">
+                    <label for="inputFont">Escolha a fonte da sua assinatura</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="inputFont" v-model="inputFont" />
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#" v-for="font in presetFont" v-on:click.prevent="inputFont = font">{{font}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col form-group">
+                    <label for="inputFontWeight">Text Font Weight</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="inputFontWeight" v-model="inputFontWeight" />
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#" v-for="weight in presetFontWeight" v-on:click.prevent="inputFontWeight = weight">{{weight}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col form-group">
+                    <label for="inputTextRatio">Text Size Ratio</label>
+                    <input class="form-control" type="number" min="0.01" max="1" v-model="inputTextRatio" /> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col form-group">
+                    <label for="inputColorText">Text Color</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="inputColorText" v-model="inputColorText" />
+                        <div class="input-group-append">
+                            <span class="input-group-text" v-bind:style="{ 'background': inputColorText }"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col form-group">
+                    <label for="inputColorBackground">Background Color / Image</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="inputColorBackground" v-model="inputColorBackground" />
+                        <div class="input-group-append">
+                            <span class="input-group-text" v-bind:style="{ 'background': inputColorBackground }"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col form-group">
+                    <label for="inputSizeWidth">Width</label>
+                    <input type="number" class="form-control" min="1" step="1" id="inputSizeWidth" v-model="inputSizeWidth" />
+                </div>
+                <div class="col form-group">
+                    <label for="inputSizeHeight">Height</label>
+                    <input type="number" class="form-control" min="1" step="1" id="inputSizeHeight" v-model="inputSizeHeight" />
+                </div>
+                <div class="col form-group">
+                    <label for="inputRadiusX">Radius X</label>
+                    <input type="number" class="form-control" min="1" step="1" id="inputRadiusX" v-model="inputRadiusX" />
+                </div>
+                <div class="col form-group">
+                    <label for="inputRadiusY">Radius Y</label>
+                    <input type="number" class="form-control" min="1" step="1" id="inputRadiusY" v-model="inputRadiusY" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row card-body border-top">
+        <svg id="mainSvg" v-bind:width="inputSizeWidth" v-bind:height="inputSizeHeight" class="mx-auto">
+            <defs>
+                <clipPath id="roundedClip">
+                    <rect x="0" y="0" v-bind:rx="inputRadiusX" v-bind:ry="inputRadiusY" width="100%" height="100%" />
+                </clipPath>
+            </defs>
+            <image x="0" y="0" width="100%" height="100%" v-if="isImage" v-bind:xlink:href="inputBackgroundImageUrl" />
+            <rect x="0" y="0" width="100%" height="100%" v-bind:fill="inputColorBackground" clip-path="url(#roundedClip)" v-if="!isImage" />
+            <text id="mainText"
+                x="50%"
+                y="50%"
+                text-anchor="middle"
+                dominant-baseline="central"
+                v-bind:fill="inputColorText"
+                v-bind:font-size="fontSize"
+                v-bind:font-family='"\"" + inputFont + "\""'
+                v-bind:font-weight="inputFontWeight">
+                {{inputText}}
+            </text>
+        </svg>
+    </div>
+    <div class="row card-body border-top">
+        <div class="form-group w-100">
+            <label for="outputFilename">Insira o nome da sua imagem e clique em salvar PNG para carregar a assinatura no seu recibo</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="outputFilename" v-model="outputFilename" />
+                <div class="input-group-append">
+                    <span class="input-group-text">.png</span>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-secondary" v-on:click="saveSvg">Salvar SVG</button>
+        <button class="btn btn-primary ml-2" v-on:click="savePng">Salvar PNG</button>
+    </div>
+</main>
