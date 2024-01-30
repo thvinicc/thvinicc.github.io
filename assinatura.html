@@ -1,0 +1,238 @@
+<meta name="viewport" content="width=device-width, initial-scale=0.6, maximum-scale=0.6, user-scalable=no" />
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<h2 style="color:#003b91;">
+Gerador de Assinaturas App Recibo Premium Shopbox Scripts.
+</h2>
+
+<h1 contenteditable id='capture' style="font-size:40px;font-family: bellair; width: 620px; height: auto; text-align: center;background-color: rgba(0,0,0,0);color:#1600a5;"><br>Insira o seu Nome</h1>
+<h3>Digite seu nome Completo abaixo:</h3>
+
+<br><br>
+<textarea id="UpdateText" rows="1" cols="40" style="resize: none; text-align: center" placeholder="Escreva aqui o seu nome.."></textarea><br />
+<br>
+<h3>Escolha aqui a fonte para sua assinatura:</h3>
+
+    <select id="input-font" onchange="myFont(this)">
+      <optgroup>
+        <option value="Times New Roman">Times New Roman</option>
+        <option style='font-family:Jellmotsy;' value="Jellmotsy">jellmotsy jellmotsy</option>
+        <option style='font-family:arial;' value="Arial">Arial</option>
+        <option style='font-family:Brasserie;' value="Brasserie">Brasserie</option>
+
+        <option style='font-family:Very Damaged;' value="Very Damaged">Very Damaged</option>
+        <option style='font-family:Verdana;' value="Verdana">Verdana</option>
+        <option style='font-family:Impact;' value="Impact">Impact</option>
+        <option style='font-family:bellair;' value="bellair">bellair</option>
+        <option style='font-family: Oriflame Script;' value="Oriflame Script">Oriflame Script</option>
+        <option style='font-family:Tequila;' value="Tequila">Tequila Tequila</option>
+        <option style='font-family:Goall Shmidtown;' value="Goall Shmidtown">Goall Shmidtown</option>
+        <option style='font-family:Plus Jakarta Sans;' value="Plus Jakarta Sans">Plus Jakarta Sans</option>
+        <option style='font-family:Qallensen;' value="Qallensen">Qallensen</option>
+        <option style='font-family:Marguerite;' value="Marguerite">Marguerite</option>
+        <option style='font-family:Orlande;' value="Orlande">Orlande</option>
+        <option style='font-family:Bella Signature;' value="Bella Signature">Bella Signature</option>
+        <option style='font-family:ALDORA;' value="ALDORA">ALDORA</option>
+        <option style='font-family:Lavanderia;' value="Lavanderia">Lavanderia</option>
+        <option style='font-family:Gome;' value="Gome">Gome</option>
+        <option style='font-family:The Samfhang;' value="The Samfhang">The Samfhang</option>
+        <option style='font-family:Farmer;' value="Farmer">Farmer</option>
+        <option style='font-family:Gondessy;' value="Gondessy">Gondessy</option>
+        <option style='font-family:Heru;' value="Heru">Heru</option>
+        <option style='font-family:UVF Centeria;' value="UVF Centeria">UVF Centeria</option>
+        <option style='font-family:Brush Lettering One;' value="Brush Lettering One">Brush Lettering One</option>
+        <option style='font-family:Ballet;' value="Ballet">Ballet Ballet</option>
+        <option style='font-family:Kapakana;' value="Kapakana">Kapakana</option>
+        <option style='font-family:Angelyn;' value="Angelyn">Angelyn</option>
+        <option style='font-family:Kathiega;' value="Kathiega">Kathiega</option>
+        <option style='font-family:Hambut;' value="Hambut">Hambut</option>
+        <option style='font-family:Hello Cherlie;' value="Hello Cherlie">Hello Cherlie</option>
+        <option style='font-family:Rousset Bilast;' value="Rousset Bilast">Rousset Bilast</option>
+        <option style='font-family:Travel Soulmates Signature;' value="Travel Soulmates Signature">Travel Soulmates Signature</option>
+                <option style='font-family:Cintya Script;' value="Cintya Script">Cintya Script</option>
+
+        </optgroup>
+
+    </select><br><br>
+    <button class="button button2" id="up">Aumentar Imagem</button><button class="button button3" id="down">Diminuir imagem</button>
+
+    <br><br>
+    <button class="button button1" id="bellair">Salvar assinatura PNG</button>
+
+<style>
+  @import url('https://fonts.cdnfonts.com/css/cintya-script');
+@import url('https://fonts.cdnfonts.com/css/bellair');
+@import url('https://fonts.cdnfonts.com/css/oriflame-script');
+@import url('https://fonts.cdnfonts.com/css/jellmotsy');
+@import url('https://fonts.cdnfonts.com/css/very-damaged-2');
+@import url('https://fonts.cdnfonts.com/css/brasserie');
+@import url('https://fonts.cdnfonts.com/css/tequila');
+@import url('https://fonts.cdnfonts.com/css/goall-shmidtown');
+@import url('https://fonts.cdnfonts.com/css/plus-jakarta-sans');
+@import url('https://fonts.cdnfonts.com/css/qallensen');
+@import url('https://fonts.cdnfonts.com/css/marguerite-2');
+@import url('https://fonts.cdnfonts.com/css/orlande');
+@import url('https://fonts.cdnfonts.com/css/bella-signature');
+@import url('https://fonts.cdnfonts.com/css/aldora');
+@import url('https://fonts.cdnfonts.com/css/lavanderia');
+@import url('https://fonts.cdnfonts.com/css/gome');
+@import url('https://fonts.cdnfonts.com/css/the-samfhang');
+@import url('https://fonts.cdnfonts.com/css/farmer');
+@import url('https://fonts.cdnfonts.com/css/gondessy');
+@import url('https://fonts.cdnfonts.com/css/heru-95244');
+@import url('https://fonts.cdnfonts.com/css/uvf-centeria');
+@import url('https://fonts.cdnfonts.com/css/brush-lettering-one');
+@import url('https://fonts.cdnfonts.com/css/ballet');
+@import url('https://fonts.cdnfonts.com/css/kapakana');
+@import url('https://fonts.cdnfonts.com/css/angelyn');
+@import url('https://fonts.cdnfonts.com/css/kathiega');
+@import url('https://fonts.cdnfonts.com/css/hambut');
+@import url('https://fonts.cdnfonts.com/css/hello-cherlie');
+@import url('https://fonts.cdnfonts.com/css/rousset-bilast');
+@import url('https://fonts.cdnfonts.com/css/travel-soulmates-signature');
+
+optgroup { font-size:27px; }
+
+
+/* Dashed border */
+hr.dashed {
+  border-top: 3px dashed #bbb;
+}
+
+
+
+    #output{
+        padding: 10px;
+        width: 150px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 24px;
+        left: 150px;
+        position: absolute;
+    }
+  .button {
+  background-color: #04AA6D; /* Green */
+  border-radius: 5px;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #04AA6D;
+}
+
+.button1:hover {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+.button3 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #f44336;
+}
+
+.button3:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+.button4 {
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
+}
+
+.button4:hover {background-color: #e7e7e7;}
+
+.button5 {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+
+.button5:hover {
+  background-color: #555555;
+  color: white;
+}
+textarea#UpdateText {
+    height: 74px;
+    width: 100%;
+    left: -3px;
+    position: relative;
+}
+</style>
+
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+function myFont(font) {
+  $("#capture").css('font-family', font.value);
+}
+</script>
+
+<script>
+  function capture() {
+  const captureElement = document.querySelector('#capture')
+  html2canvas(captureElement)
+    .then(canvas => {
+      canvas.style.display = 'none'
+      document.body.appendChild(canvas)
+      return canvas
+    })
+    .then(canvas => {
+      const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
+      const a = document.createElement('a')
+      a.setAttribute('download', Math.floor(Math.random() * 1500)+ 'minha-assinatura.png')
+      a.setAttribute('href', image)
+      a.click()
+      canvas.remove()
+    })
+}
+
+const btn = document.querySelector('#bellair')
+btn.addEventListener('click', capture)
+</script>
+
+<script>
+  $(document).ready(function(){
+    $("#UpdateText").keyup(function(){
+        // Getting the current value of textarea
+        var currentText = $(this).val();
+
+        // Setting the Div content
+        $("#capture").text(currentText);
+    });
+});
+</script>
+
+<script>
+  $('button').on('click', function(){
+    var clicked = this;
+    $('h1').css('font-size', function (i,size) {
+        console.log(parseInt(size, 10), clicked.id);
+        return parseInt(size,10) + (clicked.id === 'up' ? 2 : -2) + 'px';
+    });
+});
+</script>
