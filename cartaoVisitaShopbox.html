@@ -1,0 +1,113 @@
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Gerador de cartão</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Metal+Mania|Shrikhand|Shojumaru" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nosifer" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Courgette|Oleo+Script" rel="stylesheet">
+  
+</head>
+<body>
+	<div class="container">
+		<h1 class="text-center mt-2 mb-3"><strong>Gerador de Cartão de visita App Recibos</strong></h1>		
+  <div id="cartão">
+		<div class="row">
+		  <div class="col-md-6 col-xs-6 col-lg-6 col-xl-6 offset-md-3 offset-xs-3 offset-lg-3 offset-xl-3">
+
+<!--===============FORM================-->
+
+			<div id="formBox">
+				<div class="card pt-1 pb-1">
+					<h4 class="text-center mt-0 mb-1" style="color: #2eff00">Insira suas informações</h4>
+				  <form>
+					<div class="form-group">
+						<label for=""><h5>Nome<span style="color:red">*</span> :</h5></label>
+						<input oninput="validation1()" type="text" class="form-control pt-1 pb-1" id="name" placeholder="Insira seu nome">
+					</div>
+					<div class="form-group">
+						<label for="profession"><h5>Sua Area de Trabalho<span style="color:red">*</span> :</h5></label>
+						<input oninput="validation2()" type="text" class="form-control pt-1 pb-1" id="profession" placeholder="insira sua profissão">
+					</div>
+					<div class="form-group">
+						<label for="profile"><h5>Sua Imagem de Perfil</h5></label>
+						<input type="file" accept="image/*" class="form-control pt-1 pb-1" id="profile" >
+					</div>
+            <div class="form-group">
+						<label for="cover"><h5>Imagem de fundo</h5></label>
+						<input type="file" accept="image/*" class="form-control pt-1 pb-1 mb-0" id="cover">
+					</div>
+            
+            <div class="form-group">
+						<label for="mobile"><h5>Seu WhatssApp</h5></label>
+						<input oninput="return validation4()" type="tel" class="form-control pt-1 pb-1" id="mobile" placeholder="su numeo Whatsapp">
+					</div>
+					<div class="form-group">
+						<label for="email"><h5>Email ou site</h5></label>
+						<input oninput="validation5()" type="email" class="form-control pt-1 pb-1" id="email" placeholder="Seu email ou site www">
+					</div>
+            
+					<div class="form-group">
+				        <label for="about"><h5>Sobre Voce<span style="color:red">*</span> :</h5></label>
+				        <textarea oninput="validation3()" class="form-control mb-0 pb-0" rows="2" id="about" placeholder="escreva aqui sobre você e o que você faz"></textarea> 
+				    </div>
+            
+           <div id="brake"></div>
+            <h4 class="text-center" style="color: #2eff00">Defina as cores do seu cartão</h4>
+            <div class="form-group">
+						<label for="color"><h5>Cor de fundo seu cartão:</h5></label>
+						<input type="color" value="#e8efef" class="form-control pt-0 pb-0 mr-3" id="color">
+					</div>
+            <div class="form-group">
+						<label for="textcolor"><h5>Adjust Name Text Colour :</h5></label>
+						<input type="color" value="#000" class="form-control pt-0 pb-0 mr-3" id="textcolor">
+					</div>
+            <div class="form-group">
+						<label for="aboutcolor"><h5>Cor do seu nome no cartão:</h5></label>
+						<input type="color" value="#05a800" class="form-control pt-0 pb-0 mr-3" id="aboutcolor">
+					</div>
+            <div class="form-group">
+						<label for="contactcolor"><h5>Cor do link do email ou site:</h5></label>
+						<input type="color" value="#0734ff" class="form-control pt-0 pb-0 mb-3" id="contactcolor">
+					</div>
+					
+				    <button onClick="return generate()" type="submit" class="btn btn-block"><b>Gerar Cartão de visita</b></button>
+				  </form>
+				</div>
+			</div>	
+
+<!--===============CARD================-->
+
+			<div id="cardBox">
+    			<div class="card" id="Box">
+               <div id="coverPhoto"> </div> 
+                 <div>
+                   <img id="pic" class="img-fluid" alt="Invalid Img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf2u0RWmYALKJ431XNoTKjzu77ERLBIvXKlOEA-Q3DPo2h2rCB">
+                 </div>         	                  
+	                <div class="all">
+	                    <div class="name"> WASIM KHAN </div>
+	                    <div class="profession">STUDENT</div>
+	                    <div class="about"><i>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</i> </div>
+	                </div>
+            <div id="contact">
+                      <div class="mobile"></div>
+	                    <div class="email"></div>
+            </div>
+
+                </div>
+
+        <div class="back mt-3">
+                	<img  onClick="return previous()" src="https://openclipart.org/image/2400px/svg_to_png/174878/DarkButton.png" alt="Go Back">
+                    <button id="salvar-como-imagem">Salvar como imagem</button>
+
+                </div>
+			</div>
+           	 
+<!--===============Extra DIV================-->
+          </div>
+  	    </div>
+	</div>
+</body>
+</html>
