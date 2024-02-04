@@ -62,7 +62,7 @@
 
 
 <div id="img5">
-  <button id="botao-sobre">Ver Sessão</button>
+  <button onclick="topFunction()" id="botao-sobre">Ver Sessão</button>
 <br><br>
   <h2>cores da Sessão "Sobre Mim"</h2>
   <p>Selecione as cores para o elemento "Sobre Mim":</p>
@@ -75,7 +75,7 @@
   </div>
   
   <div id="img6">
-    <button id="help-button">Ver sessão</button>
+    <button onclick="topFunction()" id="help-button">Ver sessão</button>
 
   <p>Selecione as cores para o campo (o texto sobre voce)</p>
   <input type="color" id="corTextoEscolhida" value="#000000">
@@ -87,7 +87,7 @@
   
   
   <div id="img7">
-      <button id="botao-site">Ver sessão</button>
+      <button onclick="topFunction()" id="botao-site">Ver sessão</button>
 <br><br>
 <span>Cor do texto</span> <b>Email/site</b><br>
 <input type="text" id="colorSelectorMail1">
@@ -101,7 +101,7 @@
  
  <div id="sessaoNome">
   <div id="img8">
-    <button id="botao-nome">ver sessão</button>
+    <button onclick="topFunction()" id="botao-nome">ver sessão</button>
 <br><br>
 <b>Controle de cores da sessão: NOME</b><br><br>
   <span>Cor do seu nome</span><br>
@@ -118,7 +118,7 @@
  
 <div id="sessaoWatsapp">
 <div id="spanWhatsapp">
-  <button id="bt-whatsapp">Ver Sessão</button>
+  <button onclick="topFunction()" id="bt-whatsapp">Ver Sessão</button>
 <br><br>
 <span>Cor do seu número Whatsapp</span>
 <input type="text" id="colorSelector3">
@@ -132,7 +132,7 @@
 </div>
 
 <div id="sessaoEmpresa">
-    <button id="botao-empresa">Ver sessão</button>
+    <button onclick="topFunction()" id="botao-empresa">Ver sessão</button>
 <br><br>
 <span class="empresabloco">cor do texto </span><b>"Empresa"</b> 
 <input type="text" id="colorSelectorBtEmpresa"><br><br>
@@ -145,7 +145,7 @@
 </div>
 
 <div id="sessaoEndereco">
-    <button id="botao-endereco">Ver sessão</button><br><br>
+    <button onclick="topFunction()" id="botao-endereco">Ver sessão</button><br><br>
 <span>Mude a cor do texto:</span><b>Endereço:</b><br>
 <input type="text" id="colorSelectorEnder1">
 <br><br>
@@ -839,7 +839,12 @@ for (var key in localStorage) {
         websiteRegion1b.style.borderColor = 'transparent';
       }, 3000);
     });
-
+	    
+    
+    function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
 
 
   //]]></script>
