@@ -1,115 +1,1136 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Gerador de cartão</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Metal+Mania|Shrikhand|Shojumaru" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Nosifer" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Courgette|Oleo+Script" rel="stylesheet">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
 
-</head>
-<body>
-	<div class="container">
-		<h1 class="text-center mt-2 mb-3"><strong>Gerador de Cartão de visita App Recibos</strong></h1>		
-  <div id="cartão">
-		<div class="row">
-		  <div class="col-md-6 col-xs-6 col-lg-6 col-xl-6 offset-md-3 offset-xs-3 offset-lg-3 offset-xl-3">
+  
+  <div id="div-to-print" style="width: 640px; height: auto; background-color: #f2f2f2;">
+  
+    <div id="businessCard" class="business-card">
+    <div id="imageContainer"></div>
 
-<!--===============FORM================-->
+        <img id="profilePic" src="null" alt="Profile Picture">
+        <input type="file" id="profilePicInput" accept="image/*">
+        <div id="corpo">
+        <div id="nome"><i class="fa-regular fa-user"></i> <span contenteditable="true" id="pro1">Profissional:</span><div contenteditable="true" class="box-nome" id="name">Nome</div></div>
+        <div id="empresa"><span class="btEmpresa" contenteditable="true" id="emp02">Empresa:</span><div class="empresa" contenteditable="true" id="title">Título</div></div>
+        <div id="telefone"><span contenteditable="true" id="zap01" class="zapzap">WhatsApp</span><div contenteditable="true" class="whatsapp" id="phone">Telefone</div></div>
+        <div id="emailx"><span class="mail1" contenteditable="true" id="empMail">E-mail/Site:</span><div contenteditable="true" class="site01" id="address">Endereço</div></div>
+        <div id="sobre"><center><div id="sobreMim"><span contenteditable="true" id="desc">Sobre Mim</span></div></center><br>
+<div contenteditable="true" id="website">Website</div></div>
+        <div id="local"><span class="ender1" id="ender1">Endereço:</span><div class="ruaEndereco" contenteditable="true" id="email">Email</div></div>
+        </div>
+    </div>
+    
+    </div>
+    
+    
 
-			<div id="formBox">
-				<div class="card pt-1 pb-1">
-					<h4 class="text-center mt-0 mb-1" style="color: #2eff00">Insira suas informações</h4>
-				  <form>
-					<div class="form-group">
-						<label for=""><h5>Nome<span style="color:red">*</span> :</h5></label>
-						<input oninput="validation1()" type="text" class="form-control pt-1 pb-1" id="name" placeholder="Insira seu nome">
-					</div>
-					<div class="form-group">
-						<label for="profession"><h5>Sua Area de Trabalho<span style="color:red">*</span> :</h5></label>
-						<input oninput="validation2()" type="text" class="form-control pt-1 pb-1" id="profession" placeholder="insira sua profissão">
-					</div>
-					<div class="form-group">
-						<label for="profile"><h5>Sua Imagem de Perfil</h5></label>
-						<input type="file" accept="image/*" class="form-control pt-1 pb-1" id="profile" >
-					</div>
-            <div class="form-group">
-						<label for="cover"><h5>Imagem de fundo</h5></label>
-						<input type="file" accept="image/*" class="form-control pt-1 pb-1 mb-0" id="cover">
-					</div>
-            
-            <div class="form-group">
-						<label for="mobile"><h5>Seu WhatssApp</h5></label>
-						<input oninput="return validation4()" type="tel" class="form-control pt-1 pb-1" id="mobile" placeholder="su numeo Whatsapp">
-					</div>
-					<div class="form-group">
-						<label for="email"><h5>Email ou site</h5></label>
-						<input oninput="validation5()" type="email" class="form-control pt-1 pb-1" id="email" placeholder="Seu email ou site www">
-					</div>
-            
-					<div class="form-group">
-				        <label for="about"><h5>Sobre Voce<span style="color:red">*</span> :</h5></label>
-				        <textarea oninput="validation3()" class="form-control mb-0 pb-0" rows="2" id="about" placeholder="escreva aqui sobre você e o que você faz"></textarea> 
-				    </div>
-            
-           <div id="brake"></div>
-            <h4 class="text-center" style="color: #2eff00">Defina as cores do seu cartão</h4>
-            <div class="form-group">
-						<label for="color"><h5>Cor de fundo seu cartão:</h5></label>
-						<input type="color" value="#e8efef" class="form-control pt-0 pb-0 mr-3" id="color">
-					</div>
-            <div class="form-group">
-						<label for="textcolor"><h5>Adjust Name Text Colour :</h5></label>
-						<input type="color" value="#000" class="form-control pt-0 pb-0 mr-3" id="textcolor">
-					</div>
-            <div class="form-group">
-						<label for="aboutcolor"><h5>Cor do seu nome no cartão:</h5></label>
-						<input type="color" value="#05a800" class="form-control pt-0 pb-0 mr-3" id="aboutcolor">
-					</div>
-            <div class="form-group">
-						<label for="contactcolor"><h5>Cor do link do email ou site:</h5></label>
-						<input type="color" value="#0734ff" class="form-control pt-0 pb-0 mb-3" id="contactcolor">
-					</div>
-					
-				    <button onClick="return generate()" type="submit" class="btn btn-block"><b>Gerar Cartão de visita</b></button>
-				  </form>
-				</div>
-			</div>	
+<div id="controle">
 
-<!--===============CARD================-->
 
-			<div id="cardBox">
-    			<div class="card" id="Box">
-               <div id="coverPhoto"> </div> 
-                 <div>
-                   <img id="pic" class="img-fluid" alt="Invalid Img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf2u0RWmYALKJ431XNoTKjzu77ERLBIvXKlOEA-Q3DPo2h2rCB">
-                 </div>         	                  
-	                <div class="all">
-	                    <div class="name"> WASIM KHAN </div>
-	                    <div class="profession">STUDENT</div>
-	                    <div class="about"><i>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</i> </div>
-	                </div>
-            <div id="contact">
-                      <div class="mobile"></div>
-	                    <div class="email"></div>
-            </div>
+    <form>
+  <label class="gerarPdf" for="doc-name">Nome do Documento:</label>
+  <input type="text" id="doc-name" placeholder="Nome do Arquivo">
+  <button type="button" id="print-button">Print to PDF</button>
+</form>
+</div>
 
-                </div>
+<div id="img2">
+<label for="imageInput" class="custom-imageInput">
+    <i class="fa fa-cloud-upload"></i> Aplicar uma imagem de fundo do cartão
+</label>
 
-        <div class="back mt-3">
-                	<img  onClick="return previous()" src="https://openclipart.org/image/2400px/svg_to_png/174878/DarkButton.png" alt="Go Back">
-                    <button id="salvar-como-imagem">Salvar como imagem</button>
+<input type="file" id="imageInput">
+</div>
 
-                </div>
-			</div>
-           	 
-<!--===============Extra DIV================-->
-          </div>
-  	    </div>
-	</div>
-</body>
-</html>
+<div id="img3">
+  <label for="businessCardColor">Selecione a cor de fundo:</label>
+  <input type="color" id="businessCardColor" name="businessCardColor">
+</div>
+
+<div id="img4">
+<span>Opacidade da imagem de fundo</span>
+<input type="range" min="0" max="1" step="0.1" value="1" id="opacidadeRange">
+</div>
+
+
+<div id="img5">
+  <button id="botao-sobre">Ver Sessão</button>
+<br><br>
+  <h2>cores da Sessão "Sobre Mim"</h2>
+  <p>Selecione as cores para o elemento "Sobre Mim":</p>
+  <input type="color" id="corTexto" value="#000000">
+  <label for="corTexto">Cor do Texto</label>
+  <br>
+  <input type="color" id="corFundo" value="#ffffff">
+  <label for="corFundo">Cor de Fundo</label>
+  <br>
+  </div>
+  
+  <div id="img6">
+    <button id="help-button">Ver sessão</button>
+
+  <p>Selecione as cores para o campo (o texto sobre voce)</p>
+  <input type="color" id="corTextoEscolhida" value="#000000">
+  <label for="corTextoEscolhida">Cor do Texto</label>
+  <br>
+  <input type="color" id="corFundoEscolhida" value="#ffffff">
+  <label for="corFundoEscolhida">Cor de Fundo</label>
+  </div>
+  
+  
+  <div id="img7">
+      <button id="botao-site">Ver sessão</button>
+<br><br>
+<span>Cor do texto</span> <b>Email/site</b><br>
+<input type="text" id="colorSelectorMail1">
+<br>
+<span>Cor de fundo do campo</span>
+<br>
+<input type="text" id="colorSelectorSite01"><br>
+<span>Cor das letras do campo </span><br>
+<input type="text" id="colorSelectorSite02">
+</div>
+ 
+ <div id="sessaoNome">
+  <div id="img8">
+    <button id="botao-nome">ver sessão</button>
+<br><br>
+<b>Controle de cores da sessão: NOME</b><br><br>
+  <span>Cor do seu nome</span><br>
+<input type="text" id="colorSelector">
+<br><br>
+<span>Selecione a cor de fundo do seu nome</span>
+<input type="text" id="colorSelector6">
+<br><br>
+<span>Transparencia do do seu nome:</span>
+<input type="text" id="opacitySelector2">
+<br><br>
+ </div>
+ 
+ 
+<div id="sessaoWatsapp">
+<div id="spanWhatsapp">
+  <button id="bt-whatsapp">Ver Sessão</button>
+<br><br>
+<span>Cor do seu número Whatsapp</span>
+<input type="text" id="colorSelector3">
+<br><br>
+<span>Cor de fundo whatsapp</span>
+<input type="text" id="colorSelector4">
+<br><br>
+<span>Mudar a cor do texto: <b>WhatsApp</b></span>
+<input type="text" id="colorSelector5">
+</div>
+</div>
+
+<div id="sessaoEmpresa">
+    <button id="botao-empresa">Ver sessão</button>
+<br><br>
+<span class="empresabloco">cor do texto </span><b>"Empresa"</b> 
+<input type="text" id="colorSelectorBtEmpresa"><br><br>
+<span>Cor do texto</span>
+<input type="text" id="colorSelector2">
+<br>
+<span>Cor de fundo</span>
+<input type="text" id="colorSelectorEmpresa">
+</div>
+</div>
+
+<div id="sessaoEndereco">
+    <button id="botao-endereco">Ver sessão</button><br><br>
+<span>Mude a cor do texto:</span><b>Endereço:</b><br>
+<input type="text" id="colorSelectorEnder1">
+<br><br>
+<span>Cor das letras do </span> <b>campo</b>
+<input type="text" id="colorSelectorRuaEndereco">
+
+
+<br><br>
+<span>Mude a cor de fundo</span> <b>campo endereço</b>
+<input type="text" id="backgroundColorSelectorRuaEndereco">
+
+</div>
+
+    <script type="text/javascript">//<![CDATA[
+
+
+        window.onload = function() {
+            // Carregar dados do localStorage
+            document.getElementById('name').innerText = localStorage.getItem('name');
+            document.getElementById('title').innerText = localStorage.getItem('title');
+            document.getElementById('phone').innerText = localStorage.getItem('phone');
+            document.getElementById('address').innerText = localStorage.getItem('address');
+            document.getElementById('website').innerText = localStorage.getItem('website');
+            document.getElementById('email').innerText = localStorage.getItem('email');
+            document.getElementById('profilePic').src = localStorage.getItem('profilePic') || 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgpXv2veuLZCeE5prXmRuCfVRfL9laClkYJc38aMG0SaL7IwW5BfzKUTwGSRgoEKUOoIp5cX_a7ixn0aiyVZJS7BcMtUFTMh36hgReaXcyFw-LkNv4la1ezX9cnglSOugiFt5jkBGCUqSk1C1OfZm8cOhwK58-rCZdxTFmQuzFE0hqR12Ipejc6mPEW8jNu/s1600/perfil.png';
+
+
+            // Adicionar event listeners para salvar dados no localStorage
+            document.getElementById('name').addEventListener('input', function() {
+                localStorage.setItem('name', this.innerText);
+            });
+            document.getElementById('title').addEventListener('input', function() {
+                localStorage.setItem('title', this.innerText);
+            });
+            document.getElementById('phone').addEventListener('input', function() {
+                localStorage.setItem('phone', this.innerText);
+            });
+            document.getElementById('address').addEventListener('input', function() {
+                localStorage.setItem('address', this.innerText);
+            });
+            document.getElementById('website').addEventListener('input', function() {
+                localStorage.setItem('website', this.innerText);
+            });
+            document.getElementById('email').addEventListener('input', function() {
+                localStorage.setItem('email', this.innerText);
+            });
+
+            // Adicionar event listener para carregar imagem
+            document.getElementById('profilePic').addEventListener('click', function() {
+                document.getElementById('profilePicInput').click();
+            });
+            document.getElementById('profilePicInput').addEventListener('change', function() {
+                var reader = new FileReader();
+                reader.onloadend = function() {
+                    localStorage.setItem('profilePic', reader.result);
+                    document.getElementById('profilePic').src = reader.result;
+                }
+                reader.readAsDataURL(this.files[0]);
+            });
+        }
+        
+        
+          $('#print-button').on('click', function() {
+    var width = 11;
+    var height = 5;
+    var pdf = new jsPDF('l', 'in', [11.3, 5.5]);
+    
+
+    html2canvas($('#div-to-print')[0], {
+      scale: 4
+    }).then(function(canvas) {
+      var imgData = canvas.toDataURL('image/png');
+      pdf.addImage(imgData, 'PNG', 0.1, 0.2, width, height);
+      var docName = $('#doc-name').val() || 'div-to-pdf';
+      pdf.save(docName + '.pdf');
+    });
+  });
+  
+  $(document).ready(function() {
+  $('#imageInput').change(function() {
+    var file = this.files[0];
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var img = new Image();
+      img.src = e.target.result;
+      img.onload = function() {
+        var canvas = document.createElement('canvas');
+        var ctx = canvas.getContext('2d');
+        canvas.width = 620;
+        canvas.height = 320;
+        ctx.drawImage(img, 0, 0, 620, 320);
+        $('#imageContainer').html(canvas);
+        localStorage.setItem('image', canvas.toDataURL());
+      }
+    }
+    reader.readAsDataURL(file);
+  });
+  
+  var savedImage = localStorage.getItem('image');
+  if (savedImage) {
+    var img = new Image();
+    img.src = savedImage;
+    img.onload = function() {
+      var canvas = document.createElement('canvas');
+      var ctx = canvas.getContext('2d');
+      canvas.width = 620;
+      canvas.height = 320;
+      ctx.drawImage(img, 0, 0, 620, 320);
+      $('#imageContainer').html(canvas);
+    }
+  }
+});
+    const businessCard = document.querySelector('#businessCard');
+    const colorInput = document.querySelector('#businessCardColor');
+
+    colorInput.addEventListener('input', function() {
+      businessCard.style.backgroundColor = colorInput.value;
+      localStorage.setItem('businessCardColor', colorInput.value);
+    });
+
+    const savedColor = localStorage.getItem('businessCardColor');
+    if (savedColor) {
+      businessCard.style.backgroundColor = savedColor;
+      colorInput.value = savedColor;
+    }
+    // Obtenha a referência para a div e o controle deslizante
+var minhaDiv = document.getElementById('imageContainer');
+var opacidadeRange = document.getElementById('opacidadeRange');
+
+// Defina a opacidade inicial baseada no valor do localStorage ou padrão para 1
+minhaDiv.style.opacity = localStorage.getItem('opacidade') || 1;
+opacidadeRange.value = localStorage.getItem('opacidade') || 1;
+
+// Adicione um ouvinte de evento para detectar a mudança no controle deslizante
+opacidadeRange.addEventListener('input', function() {
+    // Defina a opacidade da div conforme o valor do controle deslizante
+    minhaDiv.style.opacity = opacidadeRange.value;
+    // Salve o valor da opacidade no localStorage
+    localStorage.setItem('opacidade', opacidadeRange.value);
+});
+
+
+const sobreMim = document.getElementById("desc");
+    const corTextoInput = document.getElementById("corTexto");
+    const corFundoInput = document.getElementById("corFundo");
+
+    corTextoInput.addEventListener("input", function() {
+      sobreMim.style.color = corTextoInput.value;
+      localStorage.setItem("corTexto", corTextoInput.value);
+    });
+
+    corFundoInput.addEventListener("input", function() {
+      sobreMim.style.backgroundColor = corFundoInput.value;
+      localStorage.setItem("corFundo", corFundoInput.value);
+    });
+
+    // Verifica se há cores salvas no localstorage e aplica ao carregar a página
+    const corTextoSalva = localStorage.getItem("corTexto");
+    const corFundoSalva = localStorage.getItem("corFundo");
+    if (corTextoSalva) {
+      sobreMim.style.color = corTextoSalva;
+      corTextoInput.value = corTextoSalva;
+    }
+    if (corFundoSalva) {
+      sobreMim.style.backgroundColor = corFundoSalva;
+      corFundoInput.value = corFundoSalva;
+    }
+    
+    
+
+    
+    
+    const website = document.getElementById("website");
+    const corTextoEscolhida = document.getElementById("corTextoEscolhida");
+    const corFundoEscolhida = document.getElementById("corFundoEscolhida");
+
+    corTextoEscolhida.addEventListener("input", function() {
+      website.style.color = corTextoEscolhida.value;
+      localStorage.setItem("corTexto1", corTextoEscolhida.value);
+    });
+
+    corFundoEscolhida.addEventListener("input", function() {
+      website.style.backgroundColor = corFundoEscolhida.value;
+      localStorage.setItem("corFundo1", corFundoEscolhida.value);
+    });
+
+    // Verifica se há cores salvas no localstorage e aplica ao carregar a página
+    const corTextoArmazenada = localStorage.getItem("corTexto1");
+    const corFundoArmazenada = localStorage.getItem("corFundo1");
+    if (corTextoArmazenada) {
+      website.style.color = corTextoArmazenada;
+      corTextoEscolhida.value = corTextoArmazenada;
+    }
+    if (corFundoArmazenada) {
+      website.style.backgroundColor = corFundoArmazenada;
+      corFundoEscolhida.value = corFundoArmazenada;
+    }
+    
+    
+    
+    
+
+
+
+// Selecionar o elemento e o seletor de cor
+const elemento = document.documentElement;
+const seletorCor = document.getElementById('nome');
+
+// Verificar se há uma cor salva no LocalStorage
+if (localStorage.getItem('cor')) {
+  // Aplicar a cor salva ao elemento
+  elemento.style.setProperty('--cor', localStorage.getItem('cor'));
+  // Atualizar a cor do seletor de cor
+  seletorCor.value = localStorage.getItem('cor');
+}
+
+// Adicionar um ouvinte de evento para detectar mudanças no seletor de cor
+seletorCor.addEventListener('input', function() {
+  // Salvar a cor no LocalStorage
+  localStorage.setItem('cor', this.value);
+  // Aplicar a cor ao elemento
+  elemento.style.setProperty('--cor', this.value);
+});
+
+  $(document).ready(function() {
+    // Inicializa o seletor de cores
+    $("#colorSelector").spectrum({
+      change: function(color) {
+        // Obtém a cor selecionada
+        var selectedColor = color.toHexString();
+        // Aplica a cor ao elemento com a classe "box-nome"
+        $(".box-nome").css("color", selectedColor);
+        // Armazena a cor selecionada no localStorage
+        localStorage.setItem('selectedColor', selectedColor);
+      }
+    });
+
+    // Verifica se há uma cor previamente selecionada no localStorage
+    var savedColor = localStorage.getItem('selectedColor');
+    if (savedColor) {
+      // Aplica a cor previamente selecionada ao elemento com a classe "box-nome"
+      $(".box-nome").css("color", savedColor);
+      // Define a cor previamente selecionada no seletor de cores
+      $("#colorSelector").spectrum("set", savedColor);
+    }
+  });
+  
+  $(document).ready(function() {
+    // Inicializa o seletor de cores
+    $("#colorSelector6").spectrum({
+      change: function(color) {
+        // Obtém a cor selecionada
+        var selectedColor6 = color.toHexString();
+        // Aplica a cor ao elemento com a classe "box-nome"
+        $(".box-nome").css("background-color", selectedColor6);
+        // Armazena a cor selecionada no localStorage
+        localStorage.setItem('selectedColor6', selectedColor6);
+      }
+    });
+
+    // Verifica se há uma cor previamente selecionada no localStorage
+    var savedColor = localStorage.getItem('selectedColor6');
+    if (savedColor) {
+      // Aplica a cor previamente selecionada ao elemento com a classe "box-nome"
+      $(".box-nome").css("background-color", savedColor);
+      // Define a cor previamente selecionada no seletor de cores
+      $("#colorSelector6").spectrum("set", savedColor);
+    }
+  });
+  
+  
+  
+  
+  $(document).ready(function() {
+    // Inicializa o seletor de opacidade
+    $("#opacitySelector2").spectrum({
+      showAlpha: true,
+      change: function(color) {
+        // Obtém a opacidade selecionada
+        var selectedOpacity2 = color.getAlpha();
+        // Aplica a opacidade ao elemento com a classe "box-nome"
+        $(".box-nome").css("opacity", selectedOpacity2);
+        // Armazena a opacidade selecionada no localStorage
+        localStorage.setItem('selectedOpacity2', selectedOpacity2);
+      }
+    });
+
+    // Verifica se há uma opacidade previamente selecionada no localStorage
+    var savedOpacity = localStorage.getItem('selectedOpacity2');
+    if (savedOpacity) {
+      // Aplica a opacidade previamente selecionada ao elemento com a classe "box-nome"
+      $(".box-nome").css("opacity", savedOpacity);
+      // Define a opacidade previamente selecionada no seletor de opacidade
+      $("#opacitySelector2").spectrum("set", "rgba(0, 0, 0, " + savedOpacity + ")");
+    }
+  });
+  
+  $(document).ready(function() {
+    // Inicializa o seletor de cores
+    $("#colorSelector2").spectrum({
+      change: function(color) {
+        // Obtém a cor selecionada
+        var selectedColor2 = color.toHexString();
+        // Aplica a cor ao elemento com a classe "empresa"
+        $(".empresa").css("color", selectedColor2);
+        // Armazena a cor selecionada no localStorage
+        localStorage.setItem('selectedColor2', selectedColor2);
+      }
+    });
+
+    // Verifica se há uma cor previamente selecionada no localStorage
+    var savedColor = localStorage.getItem('selectedColor2');
+    if (savedColor) {
+      // Aplica a cor previamente selecionada ao elemento com a classe "empresa"
+      $(".empresa").css("color", savedColor);
+      // Define a cor previamente selecionada no seletor de cores
+      $("#colorSelector2").spectrum("set", savedColor);
+    }
+  });
+  
+  $(document).ready(function() {
+    // Inicializa o seletor de cores
+    $("#colorSelectorMail1").spectrum({
+      change: function(color) {
+        // Obtém a cor selecionada
+        var selectedColorMail1 = color.toHexString();
+        // Aplica a cor ao elemento com a classe "mail1"
+        $(".mail1").css("color", selectedColorMail1);
+        // Armazena a cor selecionada no localStorage
+        localStorage.setItem('selectedColorMail1', selectedColorMail1);
+      }
+    });
+
+    // Verifica se há uma cor previamente selecionada no localStorage
+    var savedColorMail1 = localStorage.getItem('selectedColorMail1');
+    if (savedColorMail1) {
+      // Aplica a cor previamente selecionada ao elemento com a classe "mail1"
+      $(".mail1").css("color", savedColorMail1);
+      // Define a cor previamente selecionada no seletor de cores
+      $("#colorSelectorMail1").spectrum("set", savedColorMail1);
+    }
+  });
+  
+  
+  $(document).ready(function() {
+    // Inicializa o seletor de cores
+    $("#colorSelectorSite01").spectrum({
+      change: function(color) {
+        // Obtém a cor selecionada
+        var selectedColorSite01 = color.toHexString();
+        // Aplica a cor ao elemento com a classe "site01"
+        $(".site01").css("background-color", selectedColorSite01);
+        // Armazena a cor selecionada no localStorage
+        localStorage.setItem('selectedColorSite01', selectedColorSite01);
+      }
+    });
+
+    // Verifica se há uma cor previamente selecionada no localStorage
+    var savedColorSite01 = localStorage.getItem('selectedColorSite01');
+    if (savedColorSite01) {
+      // Aplica a cor previamente selecionada ao elemento com a classe "site01"
+      $(".site01").css("background-color", savedColorSite01);
+      // Define a cor previamente selecionada no seletor de cores
+      $("#colorSelectorSite01").spectrum("set", savedColorSite01);
+    }
+  });
+  $(document).ready(function() {
+    // Inicializa o seletor de cores para a classe "site01"
+    $("#colorSelectorSite02").spectrum({
+      change: function(color) {
+        // Obtém a cor selecionada
+        var selectedColorSite02 = color.toHexString();
+        // Aplica a cor ao elemento com a classe "site01"
+        $(".site01").css("color", selectedColorSite02);
+        // Armazena a cor selecionada no localStorage
+        localStorage.setItem('selectedColorSite02', selectedColorSite02);
+      }
+    });
+
+    // Verifica se há uma cor previamente selecionada no localStorage
+    var savedColorSite02 = localStorage.getItem('selectedColorSite02');
+    if (savedColorSite02) {
+      // Aplica a cor previamente selecionada ao elemento com a classe "site01"
+      $(".site01").css("color", savedColorSite02);
+      // Define a cor previamente selecionada no seletor de cores
+      $("#colorSelectorSite02").spectrum("set", savedColorSite02);
+    }
+  });
+  
+  
+   $(document).ready(function() {
+    // Inicializa o seletor de cores
+    $("#colorSelectorBtEmpresa").spectrum({
+      change: function(color) {
+        // Obtém a cor selecionada
+        var selectedColorBtEmpresa = color.toHexString();
+        // Aplica a cor ao elemento com a classe "btEmpresa"
+        $(".btEmpresa").css("color", selectedColorBtEmpresa);
+        // Armazena a cor selecionada no localStorage
+        localStorage.setItem('selectedColorBtEmpresa', selectedColorBtEmpresa);
+      }
+    });
+
+    // Verifica se há uma cor previamente selecionada no localStorage
+    var savedColorBtEmpresa = localStorage.getItem('selectedColorBtEmpresa');
+    if (savedColorBtEmpresa) {
+      // Aplica a cor previamente selecionada ao elemento com a classe "btEmpresa"
+      $(".btEmpresa").css("color", savedColorBtEmpresa);
+      // Define a cor previamente selecionada no seletor de cores
+      $("#colorSelectorBtEmpresa").spectrum("set", savedColorBtEmpresa);
+    }
+  });
+  
+   $(document).ready(function() {
+    // Inicializa o seletor de cores
+    $("#colorSelectorEmpresa").spectrum({
+      change: function(color) {
+        // Obtém a cor selecionada
+        var selectedColorEmpresa = color.toHexString();
+        // Aplica a cor ao elemento com a classe "empresa"
+        $(".empresa").css("background-color", selectedColorEmpresa);
+        // Armazena a cor selecionada no localStorage
+        localStorage.setItem('selectedColorEmpresa', selectedColorEmpresa);
+      }
+    });
+
+    // Verifica se há uma cor previamente selecionada no localStorage
+    var savedColorEmpresa = localStorage.getItem('selectedColorEmpresa');
+    if (savedColorEmpresa) {
+      // Aplica a cor previamente selecionada ao elemento com a classe "empresa"
+      $(".empresa").css("background-color", savedColorEmpresa);
+      // Define a cor previamente selecionada no seletor de cores
+      $("#colorSelectorEmpresa").spectrum("set", savedColorEmpresa);
+    }
+  });
+  
+   $(document).ready(function() {
+    // Inicializa o seletor de cores
+    $("#colorSelectorEnder1").spectrum({
+      change: function(color) {
+        // Obtém a cor selecionada
+        var selectedColorEnder1 = color.toHexString();
+        // Aplica a cor ao elemento com a classe "ender1"
+        $(".ender1").css("color", selectedColorEnder1);
+        // Armazena a cor selecionada no localStorage
+        localStorage.setItem('selectedColorEnder1', selectedColorEnder1);
+      }
+    });
+
+    // Verifica se há uma cor previamente selecionada no localStorage
+    var savedColorEnder1 = localStorage.getItem('selectedColorEnder1');
+    if (savedColorEnder1) {
+      // Aplica a cor previamente selecionada ao elemento com a classe "ender1"
+      $(".ender1").css("color", savedColorEnder1);
+      // Define a cor previamente selecionada no seletor de cores
+      $("#colorSelectorEnder1").spectrum("set", savedColorEnder1);
+    }
+  });
+  
+  
+   $(document).ready(function() {
+    // Inicializa o seletor de cores
+    $("#colorSelectorRuaEndereco").spectrum({
+      change: function(color) {
+        // Obtém a cor selecionada
+        var selectedColorRuaEndereco = color.toHexString();
+        // Aplica a cor ao elemento com a classe "ruaEndereco"
+        $(".ruaEndereco").css("color", selectedColorRuaEndereco);
+        // Armazena a cor selecionada no localStorage
+        localStorage.setItem('selectedColorRuaEndereco', selectedColorRuaEndereco);
+      }
+    });
+
+    // Verifica se há uma cor previamente selecionada no localStorage
+    var savedColorRuaEndereco = localStorage.getItem('selectedColorRuaEndereco');
+    if (savedColorRuaEndereco) {
+      // Aplica a cor previamente selecionada ao elemento com a classe "ruaEndereco"
+      $(".ruaEndereco").css("color", savedColorRuaEndereco);
+      // Define a cor previamente selecionada no seletor de cores
+      $("#colorSelectorRuaEndereco").spectrum("set", savedColorRuaEndereco);
+    }
+  });
+  
+  $(document).ready(function() {
+    // Inicializa o seletor de cores para a cor de fundo
+    $("#backgroundColorSelectorRuaEndereco").spectrum({
+      type: "color",
+      showInput: "true",
+      showInitial: "true",
+      showPalette: "true",
+      showSelectionPalette: "true",
+      preferredFormat: "hex",
+      change: function(color) {
+        // Obtém a cor selecionada
+        var selectedBackgroundColorRuaEndereco = color.toHexString();
+        // Aplica a cor de fundo ao elemento com a classe "ruaEndereco"
+        $(".ruaEndereco").css("background-color", selectedBackgroundColorRuaEndereco);
+        // Armazena a cor de fundo selecionada no localStorage
+        localStorage.setItem('selectedBackgroundColorRuaEndereco', selectedBackgroundColorRuaEndereco);
+      }
+    });
+
+    // Verifica se há uma cor de fundo previamente selecionada no localStorage
+    var savedBackgroundColorRuaEndereco = localStorage.getItem('selectedBackgroundColorRuaEndereco');
+    if (savedBackgroundColorRuaEndereco) {
+      // Aplica a cor de fundo previamente selecionada ao elemento com a classe "ruaEndereco"
+      $(".ruaEndereco").css("background-color", savedBackgroundColorRuaEndereco);
+      // Define a cor de fundo previamente selecionada no seletor de cores
+      $("#backgroundColorSelectorRuaEndereco").spectrum("set", savedBackgroundColorRuaEndereco);
+    }
+  });
+  
+
+  
+    $(document).ready(function() {
+    // Inicializa o seletor de cores
+    $("#colorSelector3").spectrum({
+      change: function(color) {
+        // Obtém a cor selecionada
+        var selectedColor3 = color.toHexString();
+        // Aplica a cor ao elemento com a classe "whatsapp"
+        $(".whatsapp").css("color", selectedColor3);
+        // Armazena a cor selecionada no localStorage
+        localStorage.setItem('selectedColor3', selectedColor3);
+      }
+    });
+
+    // Verifica se há uma cor previamente selecionada no localStorage
+    var savedColor = localStorage.getItem('selectedColor3');
+    if (savedColor) {
+      // Aplica a cor previamente selecionada ao elemento com a classe "whatsapp"
+      $(".whatsapp").css("color", savedColor);
+      // Define a cor previamente selecionada no seletor de cores
+      $("#colorSelector3").spectrum("set", savedColor);
+    }
+  });
+  
+    $(document).ready(function() {
+    // Inicializa o seletor de cores
+    $("#colorSelector4").spectrum({
+      change: function(color) {
+        // Obtém a cor selecionada
+        var selectedColor4 = color.toHexString();
+        // Aplica a cor ao elemento com a classe "whatsapp"
+        $(".whatsapp").css("background-color", selectedColor4);
+        // Armazena a cor selecionada no localStorage
+        localStorage.setItem('selectedColor4', selectedColor4);
+      }
+    });
+
+    // Verifica se há uma cor previamente selecionada no localStorage
+    var savedColor = localStorage.getItem('selectedColor4');
+    if (savedColor) {
+      // Aplica a cor previamente selecionada ao elemento com a classe "whatsapp"
+      $(".whatsapp").css("background-color", savedColor);
+      // Define a cor previamente selecionada no seletor de cores
+      $("#colorSelector4").spectrum("set", savedColor);
+    }
+  });
+  
+  
+    $(document).ready(function() {
+    // Inicializa o seletor de cores
+    $("#colorSelector5").spectrum({
+      change: function(color) {
+        // Obtém a cor selecionada
+        var selectedColor5 = color.toHexString();
+        // Aplica a cor ao elemento com a classe "zapzap"
+        $(".zapzap").css("color", selectedColor5);
+        // Armazena a cor selecionada no localStorage
+        localStorage.setItem('selectedColor5', selectedColor5);
+      }
+    });
+
+    // Verifica se há uma cor previamente selecionada no localStorage
+    var savedColor = localStorage.getItem('selectedColor5');
+    if (savedColor) {
+      // Aplica a cor previamente selecionada ao elemento com a classe "zapzap"
+      $(".zapzap").css("color", savedColor);
+      // Define a cor previamente selecionada no seletor de cores
+      $("#colorSelector5").spectrum("set", savedColor);
+    }
+  });
+  
+  
+const editables = document.querySelectorAll("[contenteditable]");
+
+editables.forEach(el => {
+  el.addEventListener("blur", () => {
+    localStorage.setItem("dataStorage-" + el.id, el.innerHTML);
+  })
+});
+
+for (var key in localStorage) {
+  if (key.includes("dataStorage-")) {
+    const id = key.replace("dataStorage-","");
+    document.querySelector("#" + id).innerHTML = localStorage.getItem(key);
+  }
+}
+
+
+
+  
+  
+  const helpButton = document.querySelector('#help-button');
+    const websiteRegion = document.querySelector('#website');
+
+        helpButton.addEventListener('click', () => {
+      websiteRegion.classList.add('shake'); // Adiciona a classe CSS com a animação de shake
+      websiteRegion.style.borderColor = 'red';
+      setTimeout(() => {
+        websiteRegion.classList.remove('shake'); // Remove a classe CSS com a animação de shake
+        websiteRegion.style.borderColor = 'transparent';
+      }, 3000);
+    });
+    
+      const helpButton1 = document.querySelector('#botao-nome');
+    const websiteRegion1 = document.querySelector('#nome');
+
+    helpButton1.addEventListener('click', () => {
+      websiteRegion1.classList.add('shake'); // Adiciona a classe CSS com a animação de shake
+      websiteRegion1.style.borderColor = 'red';
+      setTimeout(() => {
+        websiteRegion1.classList.remove('shake'); // Remove a classe CSS com a animação de shake
+        websiteRegion1.style.borderColor = 'transparent';
+      }, 3000);
+    });
+    
+    
+          const helpButton1s = document.querySelector('#botao-site');
+    const websiteRegion1s = document.querySelector('#emailx');
+
+    helpButton1s.addEventListener('click', () => {
+      websiteRegion1s.classList.add('shake'); // Adiciona a classe CSS com a animação de shake
+      websiteRegion1s.style.borderColor = 'red';
+      setTimeout(() => {
+        websiteRegion1s.classList.remove('shake'); // Remove a classe CSS com a animação de shake
+        websiteRegion1s.style.borderColor = 'transparent';
+      }, 3000);
+    });
+    
+    
+    
+        const helpButtonwh = document.querySelector('#bt-whatsapp');
+    const websiteRegionwh = document.querySelector('#telefone');
+
+    helpButtonwh.addEventListener('click', () => {
+      websiteRegionwh.classList.add('shake'); // Adiciona a classe CSS com a animação de shake
+      websiteRegionwh.style.borderColor = 'red';
+      setTimeout(() => {
+        websiteRegionwh.classList.remove('shake'); // Remove a classe CSS com a animação de shake
+        websiteRegionwh.style.borderColor = 'transparent';
+      }, 3000);
+    });
+    
+  
+      const helpButton10 = document.querySelector('#botao-sobre');
+    const websiteRegion10 = document.querySelector('#sobreMim');
+
+    helpButton10.addEventListener('click', () => {
+      websiteRegion10.classList.add('shake'); // Adiciona a classe CSS com a animação de shake
+      websiteRegion10.style.borderColor = 'red';
+      setTimeout(() => {
+        websiteRegion10.classList.remove('shake'); // Remove a classe CSS com a animação de shake
+        websiteRegion10.style.borderColor = 'transparent';
+      }, 3000);
+    });
+    
+    
+    
+          const helpButton1a = document.querySelector('#botao-empresa');
+    const websiteRegion1a = document.querySelector('#empresa');
+
+    helpButton1a.addEventListener('click', () => {
+      websiteRegion1a.classList.add('shake'); // Adiciona a classe CSS com a animação de shake
+      websiteRegion1a.style.borderColor = 'red';
+      setTimeout(() => {
+        websiteRegion1a.classList.remove('shake'); // Remove a classe CSS com a animação de shake
+        websiteRegion1a.style.borderColor = 'transparent';
+      }, 3000);
+    });
+    
+          const helpButton1b = document.querySelector('#botao-endereco');
+    const websiteRegion1b = document.querySelector('#local');
+
+    helpButton1b.addEventListener('click', () => {
+      websiteRegion1b.classList.add('shake'); // Adiciona a classe CSS com a animação de shake
+      websiteRegion1b.style.borderColor = 'red';
+      setTimeout(() => {
+        websiteRegion1b.classList.remove('shake'); // Remove a classe CSS com a animação de shake
+        websiteRegion1b.style.borderColor = 'transparent';
+      }, 3000);
+    });
+
+
+
+  //]]></script>
+
+
+<style>
+          #businessCard {
+            background-color: #f0f0f0;
+            width: 600px;
+            height: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        #businessCard div {
+    margin-bottom: 19px;
+    font-family: roboto;
+    }
+        #profilePic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    z-index: 99999999999999;
+    position: relative;
+    left: 75px;
+    top: -315px;
+    opacity: 100%;
+        }
+        #profilePicInput {
+            display: none;
+        }
+        
+div#corpo {
+    position: absolute;
+    top: 23px;
+    background-color: #aaddbb26;
+    width: 482px;
+    height: 320px;
+    border-radius: 7px;
+    left: 150px;
+}
+div#nome {
+    left: 149px;
+    position: relative;
+    max-width: 330px;
+    font-weight: 600;
+    font-size: 20px;
+}
+div#empresa {
+    position: relative;
+    left: 150px;
+    max-width: 330px;
+        font-weight: bold;
+}
+div#telefone {
+    position: relative;
+    left: 150px;
+    max-width: 330px;
+    font-size: 23px;
+    font-weight: 500;
+    color: teal;
+}
+div#emailx {
+    position: relative;
+    left: 150px;
+    max-width: 330px;
+    font-size: 23px;
+    font-weight: 500;
+    color: #4900ca;
+}
+div#sobre {
+    left: -122px;
+    position: relative;
+    max-width: 231px;
+    font-size: 20px;
+    top: -128px;
+}
+span#desc {
+    background-color: #00800045;
+    padding: 2px;
+    border-radius: 5px;
+        left: 10px;
+    position: relative;
+}
+div#website {
+    font-size: 16px;
+    max-width: 230px;
+    font-weight: bold;
+    height: 100px;
+    border-radius: 5px;
+    left: 8px;
+    position: relative;
+    padding-left: 7px;
+    top: -8px;
+}
+div#local {
+    position: relative;
+    left: 150px;
+    max-width: 330px;
+    font-size: 11px;
+    font-weight: 500;
+    top: -185px;
+}
+    /* Adiciona a animação de pulsação */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .pulse {
+      animation: pulse 1s infinite;
+    }
+div:empty {
+    background-color: rgb(46 113 255 / 19%);
+    border-radius: 7px;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    transform: scale(1);
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
+}
+  @keyframes shake {
+      0% {
+        transform: translateX(0);
+      }
+      10% {
+        transform: translateX(-10px);
+      }
+      20% {
+        transform: translateX(10px);
+      }
+      30% {
+        transform: translateX(-10px);
+      }
+      40% {
+        transform: translateX(10px);
+      }
+      50% {
+        transform: translateX(-10px);
+      }
+      60% {
+        transform: translateX(10px);
+      }
+      70% {
+        transform: translateX(-10px);
+      }
+      80% {
+        transform: translateX(10px);
+      }
+      90% {
+        transform: translateX(-10px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    .shake {
+      animation: shake 3s;
+    }
+div#controle {
+    position: relative;
+    top: 125px;
+}
+div#img2 {
+    position: relative;
+}
+div#img3 {
+    position: relative;
+        top: 20px;
+}
+
+div#img4 {
+    position: relative;
+        top: 100px;
+}
+div#img5 {
+    position: relative;
+    top: 150px;
+    background-color: #aaddbb70;
+    width: 400px;
+    border-radius: 10px;
+    padding: 10px;
+}
+div#img6 {
+    position: relative;
+    top: 200px;
+    background-color: #aaddbb70;
+    width: 400px;
+    border-radius: 10px;
+    padding: 10px;
+}
+div#img7 {
+    position: relative;
+    top: 50px;
+    background-color: #caffff;
+    width: 421px;
+    border-radius: 10px;
+    padding: 10px;
+    left: 481px;
+}
+div#img8 {
+    position: relative;
+    top: 75px;
+    background-color: aliceblue;
+    width: 400px;
+    border-radius: 10px;
+    padding: 10px;
+}
+div#img9 {
+    position: relative;
+        top: 350px;
+}
+input[type="file"] {
+    display: none;
+}
+.custom-imageInput {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+canvas {
+border-radius: 20px;
+left: -10px;
+position: relative;
+top: -10px;
+}
+div#spanWhatsapp {
+    position: relative;
+    left: 475px;
+    top: -630px;
+    background-color: #fbd70052;
+    padding: 10px;
+    border-radius: 10px;
+    width: 400px;
+}
+div#phone {
+    padding-left: 6px;
+    border-radius: 5px;
+}
+div#sessaoEmpresa {
+    position: relative;
+    top: -67px;
+    border-radius: 10px;
+    background-color: beige;
+    padding: 10px;
+    width: 400px;
+}
+div#name {
+    border-radius: 5px;
+}
+div#address {
+    border-radius: 5px;
+}
+
+div#sessaoEndereco {
+position: relative;
+    width: 420px;
+    background-color: #d2691c5e;
+    padding: 10px;
+    border-radius: 10px;
+    top: -552px;
+    left: 480px;
+}
+div#title {
+    border-radius: 5px;
+}
+div#email {
+    border-radius: 5px;
+}
+</style>
