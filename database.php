@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Por exemplo, verificar em um banco de dados
 
     // Redireciona o usuário após o login bem-sucedido
-    header("Location: welcome.php");
+    header("Location: https://www.anunciarbr.net");
     exit();
 }
 ?>
