@@ -1,15 +1,16 @@
 <?php
-// Verifica se o formulário foi submetido
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Coleta os dados do formulário
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+// Dados de conexão
+$servername = "db4free.net";
+$username = "teste1xa";
+$password = "1q2w3e4r";
+$dbname = "teste1xa";
 
-    // Aqui você pode realizar a validação do nome de usuário e senha
-    // Por exemplo, verificar em um banco de dados
+// Criar a conexão
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Redireciona o usuário após o login bem-sucedido
-    header("Location: https://www.anunciarbr.net");
-    exit();
+// Verificar a conexão
+if ($conn->connect_error) {
+  die("Conexão falhou: " . $conn->connect_error);
 }
+echo "Conexão bem-sucedida";
 ?>
